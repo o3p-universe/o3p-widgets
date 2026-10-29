@@ -1,12 +1,12 @@
 {
     "name": "o3p - widgets",
     "summary": "Shared web widgets for Odoo.",
-    "version": "20.0.1.2.0",
+    "version": "20.0.1.5.0",
     "category": "Technical",
     "author": "O3P",
     "website": "https://github.com/odoo-third-party/o3p-widgets",
     "license": "LGPL-3",
-    "depends": ["base_setup", "web"],
+    "depends": ["base_setup", "mail", "web"],
     "sequence": 1,
     "data": [
         "security/ir.access.csv",
@@ -15,9 +15,16 @@
     ],
     "assets": {
         "web.assets_backend": [
+            "o3p_widgets/static/src/js/form_visibility_guard.js",
+            "o3p_widgets/static/src/js/scroll_load.js",
+            "o3p_widgets/static/src/xml/scroll_load.xml",
+            "o3p_widgets/static/src/js/group_accordion.js",
             "o3p_widgets/static/src/js/list_renderer_minimum_lines.js",
             "o3p_widgets/static/src/js/notebook_tab_persistence.js",
+            "o3p_widgets/static/src/js/resizable_chatter.js",
             "o3p_widgets/static/src/js/text_field_autoresize.js",
+            "o3p_widgets/static/src/scss/group_accordion.scss",
+            "o3p_widgets/static/src/scss/resizable_chatter.scss",
         ],
     },
     "installable": True,

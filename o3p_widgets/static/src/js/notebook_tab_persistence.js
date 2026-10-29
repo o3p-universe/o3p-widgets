@@ -110,7 +110,7 @@ function getNotebookStorageId(notebook) {
     if (notebookIndex < 0) {
         return null;
     }
-    return `${getPageUrl()}::[${notebookIndex}]`;
+    return `::[${notebookIndex}]${getPageUrl()}`;
 }
 
 function forgetEntry(storageId, entries) {

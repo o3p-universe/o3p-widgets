@@ -28,6 +28,44 @@ stored as generic `o3p.widget.memory` records with the memory type `lastnbtab`;
 the settings list presents their text and numeric values as **URL Prefix** and
 **Tab Index (from 0)**. This option is also disabled on first install.
 
+After enabling **Enable support of accordion="true" for groups** in O3P Widgets
+settings, form groups can opt into a collapsed accordion presentation with the
+`accordion="true"` architecture attribute:
+
+```xml
+<group string="Additional details" accordion="true">
+    <field name="notes"/>
+</group>
+```
+
+An accordion automatically starts collapsed when all of its fields are empty,
+and open when at least one field has a value. Selecting its title overrides
+that automatic state. Groups without the attribute, or with
+`accordion="false"`, retain Odoo's standard rendering.
+
+The separate **Sticky accordion open-close status** setting remembers each
+accordion's last user-selected state in that browser. Entries are indexed by
+the normalized page URL and the accordion's zero-based position in the page's
+`.o3p_accordion_group` selector result. They expire after one month; until then,
+the remembered state takes precedence over automatic field inspection. Both
+accordion settings are disabled by default on first installation.
+
+The **Odoo UI Settings** area includes an **Enable resizable chatter** switch.
+When enabled, the left edge of a side chatter can be dragged to resize it;
+double-clicking the resize edge restores Odoo's default width. The width is
+remembered in the current browser. The implementation attaches to Odoo's
+rendered chatter element and safely restores its handle after an Owl rerender,
+without replacing or rewriting the form compiler.
+
+The **Enable scroll loading** option in **Odoo UI Settings** is disabled by
+default. When enabled, scrolling within 100 pixels of the bottom of an ungrouped
+list or kanban view increases the visible range by up to 80 records. Existing
+visible records stay in the range; Odoo reloads that range through its model API.
+A **Load all** button loads all matching records from the start, asking for
+confirmation above 5,000 records. Grouped views, embedded relation fields, sample
+data, offline views, and lists with an active inline edit retain native behavior.
+Failed requests can be retried. Refresh the browser after changing the setting.
+
 ## Deployment
 
 - `./restart_odoo20.sh` deploys the current repository and restarts Odoo.

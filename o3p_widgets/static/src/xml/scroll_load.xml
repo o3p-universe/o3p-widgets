@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="o3p_widgets.ListScrollLoad" t-inherit="web.ListView" t-inherit-mode="extension">
+        <xpath expr="//t[@t-set-slot='control-panel-buttons']" position="inside">
+            <button t-if="this.o3pCanLoadAll" type="button" class="btn btn-secondary o3p_load_all"
+                    t-on-click="this.o3pLoadAll" title="Load all matching records">Load all</button>
+        </xpath>
+    </t>
+    <t t-name="o3p_widgets.KanbanScrollLoad" t-inherit="web.KanbanView" t-inherit-mode="extension">
+        <xpath expr="//t[@t-set-slot='control-panel-buttons']" position="inside">
+            <button t-if="this.o3pCanLoadAll" type="button" class="btn btn-secondary o3p_load_all"
+                    t-on-click="this.o3pLoadAll" title="Load all matching records">Load all</button>
+        </xpath>
+    </t>
+</templates>

@@ -16,4 +16,20 @@
         <field name="key">o3p_widgets.default_notebook_tabs</field>
         <field name="value">False</field>
     </record>
+    <record id="ir_config_parameter_enable_group_accordion" model="ir.config_parameter">
+        <field name="key">o3p_widgets.enable_group_accordion</field>
+        <field name="value">False</field>
+    </record>
+    <record id="ir_config_parameter_sticky_group_accordion" model="ir.config_parameter">
+        <field name="key">o3p_widgets.sticky_group_accordion</field>
+        <field name="value">False</field>
+    </record>
+    <record id="ir_config_parameter_enable_resizable_chatter" model="ir.config_parameter">
+        <field name="key">o3p_widgets.enable_resizable_chatter</field>
+        <field name="value">False</field>
+    </record>
+    <record id="ir_config_parameter_enable_scroll_load" model="ir.config_parameter">
+        <field name="key">o3p_widgets.enable_scroll_load</field>
+        <field name="value">False</field>
+    </record>
 </odoo>

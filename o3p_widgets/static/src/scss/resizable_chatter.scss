@@ -1,0 +1,48 @@
+.o-mail-Form-chatter {
+    &.o-aside {
+        position: relative;
+
+        &.o3p-resizable-chatter-resized {
+            flex-grow: 0;
+            max-width: calc(100% - 320px);
+        }
+
+        > .o3p-resizable-chatter-handle {
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            bottom: 0;
+            left: -4px;
+            width: 8px;
+            cursor: col-resize;
+            touch-action: none;
+
+            &::after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 3px;
+                width: 2px;
+                background: transparent;
+                content: "";
+            }
+
+            &:hover::after {
+                background: $o-action;
+            }
+        }
+    }
+
+    &:not(.o-aside) > .o3p-resizable-chatter-handle {
+        display: none;
+    }
+}
+
+body.o3p-resizing-chatter {
+    cursor: col-resize !important;
+    user-select: none !important;
+
+    * {
+        cursor: col-resize !important;
+    }
+}

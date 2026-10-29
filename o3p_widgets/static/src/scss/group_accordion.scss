@@ -1,0 +1,31 @@
+.o3p_accordion_group {
+    width: 100%;
+
+    .o3p_accordion_group_summary {
+        position: relative;
+        padding-left: map-get($spacers, 4);
+        cursor: pointer;
+        user-select: none;
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            content: "\203A";
+            font-size: 1.25rem;
+            line-height: 1;
+            transform: translateY(-50%);
+            transition: transform 150ms ease;
+        }
+    }
+
+    &.o3p_accordion_group_open .o3p_accordion_group_summary::before {
+        transform: translateY(-50%) rotate(90deg);
+    }
+
+    &.o3p_accordion_group_collapsed {
+        > :not(.o3p_accordion_group_title_container) {
+            display: none !important;
+        }
+    }
+}

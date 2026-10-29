@@ -24,6 +24,18 @@
                             <field name="minimum_lists_lines"
                                    options="{'type': 'number', 'min': 0}"/>
                         </setting>
+                        <separator string="Form Groups"/>
+                        <setting id="o3p_widgets_enable_group_accordion"
+                                 string="Enable support of accordion=&quot;true&quot; for groups"
+                                 help="Allow form groups with accordion=&quot;true&quot; to collapse and expand. Changes take effect after refreshing the browser.">
+                            <field name="enable_group_accordion"/>
+                        </setting>
+                        <setting id="o3p_widgets_sticky_group_accordion"
+                                 string="Sticky accordion open-close status"
+                                 help="Remember each accordion group's last open or closed state in this browser for one month. Changes take effect after refreshing the browser."
+                                 invisible="not enable_group_accordion">
+                            <field name="sticky_group_accordion"/>
+                        </setting>
                         <separator string="Notebook Tabs"/>
                         <setting id="o3p_widgets_remember_notebook_tabs"
                                  string="Remember notebook tabs"
@@ -32,9 +44,22 @@
                         </setting>
                         <setting id="o3p_widgets_default_notebook_tabs"
                                  string="Default notebook tabs"
-                                 help="Use URL-prefix rules to choose a notebook tab when this browser has no exact saved tab. Tab indexes start at 0. Changes take effect after refreshing the browser.">
+                                 help="Use key-prefix rules to choose a notebook tab when this browser has no exact saved tab. Both notebook and tab indexes start at 0. Changes take effect after refreshing the browser.">
                             <field name="notebook_default_tabs"/>
                             <div class="content-group mt16" invisible="not notebook_default_tabs">
+                                <div class="text-muted mb-2">
+                                    Each memory key starts with <code>::[N]</code>, where
+                                    <code>N</code> is the notebook's zero-based position in the
+                                    page's <code>.o_notebook</code> selector result:
+                                    <code>::[0]</code> is the first notebook,
+                                    <code>::[1]</code> is the second, and so on. The configured
+                                    tab index is also zero-based: <code>0</code> selects its first
+                                    tab and <code>1</code> its second.<br/>
+                                    Current examples: <code>::[0]contacts/</code> selects tab
+                                    <code>0</code> for the first notebook on Contacts URLs;
+                                    <code>::[0]action216/</code> selects tab <code>0</code> for
+                                    the first notebook on action216 URLs.
+                                </div>
                                 <field name="notebook_default_tab_memory_ids"
                                        nolabel="1"
                                        domain="[('mtype', '=', 'lastnbtab')]"
@@ -65,6 +90,18 @@
                                     </form>
                                 </field>
                             </div>
+                        </setting>
+                    </block>
+                    <block title="Odoo UI Settings">
+                        <setting id="o3p_widgets_enable_scroll_load"
+                                 string="Enable scroll loading"
+                                 help="Load more records when scrolling to the bottom of ungrouped list and kanban views, and show a Load all button. Disabled by default. Changes take effect after refreshing the browser.">
+                            <field name="enable_scroll_load"/>
+                        </setting>
+                        <setting id="o3p_widgets_enable_resizable_chatter"
+                                 string="Enable resizable chatter"
+                                 help="Allow side chatters to be resized by dragging their left edge. The selected width is remembered in this browser; double-click the resize edge to restore Odoo's default width. Changes take effect after refreshing the browser.">
+                            <field name="enable_resizable_chatter"/>
                         </setting>
                     </block>
                 </app>

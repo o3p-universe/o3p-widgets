@@ -65,13 +65,3 @@ A **Load all** button loads all matching records from the start, asking for
 confirmation above 5,000 records. Grouped views, embedded relation fields, sample
 data, offline views, and lists with an active inline edit retain native behavior.
 Failed requests can be retried. Refresh the browser after changing the setting.
-
-## Deployment
-
-- `./restart_odoo20.sh` deploys the current repository and restarts Odoo.
-- `./upush.sh "commit message"` commits and pushes, with an optional restart.
-- `./fulldeploy.sh "commit message"` commits, pushes, deploys, and installs or
-  upgrades `o3p_widgets` on the configured database.
-
-Deployment settings can be overridden with the environment variables declared
-at the top of each script.

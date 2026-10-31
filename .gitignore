@@ -223,3 +223,6 @@ __marimo__/
 upush.sh
 fulldeploy.sh
 restart_odoo20.sh
+
+# Local agent guidance
+AGENTS.md

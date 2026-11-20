@@ -126,7 +126,27 @@ if (session.o3p_widgets?.enable_scroll_load) {
                 const offset = all ? 0 : list.offset;
                 const limit = all ? list.count : Math.min(list.limit + 80, list.count - offset);
                 if (limit > 0) {
-                    await list.load({ offset, limit });
+                    const config = this.o3pLoadContext(list);
+                    // Keep selection capture, reload and restoration in one model
+                    // operation so selection callbacks never see an empty selection.
+                    await list.model.mutex.exec(async () => {
+                        if (!this.o3pScrollAlive || this.model.root !== list ||
+                            list.editedRecord || this.o3pLoadContext(list) !== config) {
+                            return;
+                        }
+                        const selectedIds = new Set(list.selection.map((record) => record.resId));
+                        const isDomainSelected = list.isDomainSelected;
+                        // This is the same operation as list.load(), whose mutex
+                        // we already hold here.
+                        await list._load(offset, limit, list.orderBy, list.domain);
+                        if (!this.o3pScrollAlive || this.model.root !== list) {
+                            return;
+                        }
+                        for (const record of list.records) {
+                            record.selected = isDomainSelected || selectedIds.has(record.resId);
+                        }
+                        list.isDomainSelected = isDomainSelected;
+                    });
                 }
             },
 
